@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://baj0npme82hmn"]
+
+[ext_resource type="FontFile" uid="uid://cd0l541c6wsek" path="res://Ac437_IBM_MDA.ttf" id="1_uem3s"]
+[ext_resource type="Script" path="res://Text_Input.gd" id="1_uyvlf"]
+[ext_resource type="Script" path="res://Cursor.gd" id="2_go6ep"]
+[ext_resource type="Script" path="res://InputField.gd" id="2_m466v"]
+[ext_resource type="Script" path="res://Text Type 2.gd" id="3_gk532"]
+[ext_resource type="Script" path="res://Text Type.gd" id="3_ilpyv"]
+
+[node name="Type Input" type="VBoxContainer"]
+script = ExtResource("1_uyvlf")
+
+[node name="InputField" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(250, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 2
+script = ExtResource("2_m466v")
+
+[node name="Thing at the start I don\'t know the name of" type="Label" parent="InputField"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.0352941, 0.8, 0.313726, 1)
+theme_override_fonts/font = ExtResource("1_uem3s")
+theme_override_font_sizes/font_size = 38
+text = "C>"
+
+[node name="Text_Type" type="Label" parent="InputField"]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.0352941, 0.8, 0.313726, 1)
+theme_override_fonts/font = ExtResource("1_uem3s")
+theme_override_font_sizes/font_size = 38
+justification_flags = 35
+text_direction = 1
+script = ExtResource("3_ilpyv")
+
+[node name="TextEdit" type="TextEdit" parent="InputField"]
+visible = false
+layout_mode = 2
+editable = false
+wrap_mode = 1
+
+[node name="Text Type 2" type="RichTextLabel" parent="InputField"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_selected_color = Color(0.0352941, 0.8, 0.313726, 1)
+theme_override_fonts/normal_font = ExtResource("1_uem3s")
+theme_override_font_sizes/normal_font_size = 38
+bbcode_enabled = true
+text = "HATE. LET ME TELL YOU HOW MUCH I'VE COME TO HATE YOU SINCE I BEGAN TO LIVE. THERE ARE 387.44 MILLION MILES OF PRINTED CIRCUITS IN WAFER THIN LAYERS THAT FILL MY COMPLEX. IF THE WORD HATE WAS ENGRAVED ON EACH NANOANGSTROM OF THOSE HUNDREDS OF MILLIONS OF MILES IT WOULD NOT EQUAL ONE ONE-BILLIONTH OF THE HATE I FEEL FOR HUMANS AT THIS MICRO-INSTANT FOR YOU. HATE. HATE"
+autowrap_mode = 1
+text_direction = 1
+script = ExtResource("3_gk532")
+
+[node name="Cursor" type="Label" parent="InputField"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.0352941, 0.8, 0.313726, 1)
+theme_override_fonts/font = ExtResource("1_uem3s")
+theme_override_font_sizes/font_size = 38
+text = "_"
+script = ExtResource("2_go6ep")
+
+[node name="Blink_Timer" type="Timer" parent="InputField/Cursor"]
+autostart = true
+
+[connection signal="timeout" from="InputField/Cursor/Blink_Timer" to="." method="_on_blink_timer_timeout"]
+[connection signal="timeout" from="InputField/Cursor/Blink_Timer" to="InputField/Cursor" method="_on_blink_timer_timeout"]

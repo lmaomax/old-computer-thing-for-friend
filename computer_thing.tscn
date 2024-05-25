@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://786m72xs7u6u"]
+
+[ext_resource type="Script" path="res://computer_thing.gd" id="1_52mnk"]
+[ext_resource type="PackedScene" uid="uid://dtkhff4gc1i21" path="res://response.tscn" id="2_svdk1"]
+[ext_resource type="FontFile" uid="uid://cd0l541c6wsek" path="res://Ac437_IBM_MDA.ttf" id="2_vhuak"]
+[ext_resource type="PackedScene" uid="uid://baj0npme82hmn" path="res://Input.tscn" id="3_quikn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j31pp"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Computer Thing" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_52mnk")
+
+[node name="Background Computer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_j31pp")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background Computer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background Computer/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="PC_technically" type="VBoxContainer" parent="Background Computer/MarginContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background Computer/MarginContainer/ScrollContainer/PC_technically"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background Computer/MarginContainer/ScrollContainer/PC_technically/HBoxContainer"]
+layout_mode = 2
+
+[node name="Comp Intro" type="VBoxContainer" parent="Background Computer/MarginContainer/ScrollContainer/PC_technically"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background Computer/MarginContainer/ScrollContainer/PC_technically/Comp Intro"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0352941, 0.8, 0.313726, 1)
+theme_override_fonts/font = ExtResource("2_vhuak")
+theme_override_font_sizes/font_size = 38
+text = "The PYRE Personal Computer PyOS"
+
+[node name="Label2" type="Label" parent="Background Computer/MarginContainer/ScrollContainer/PC_technically/Comp Intro"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0352941, 0.8, 0.313726, 1)
+theme_override_fonts/font = ExtResource("2_vhuak")
+theme_override_font_sizes/font_size = 38
+text = "Version 1.00 (C)Copyright Pyre Corp 20xx"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background Computer/MarginContainer/ScrollContainer/PC_technically/Comp Intro"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Background Computer/MarginContainer/ScrollContainer/PC_technically/Comp Intro"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vhuak")
+theme_override_font_sizes/font_size = 38
+
+[node name="Type Input" parent="Background Computer/MarginContainer/ScrollContainer/PC_technically" instance=ExtResource("3_quikn")]
+layout_mode = 2
+
+[node name="Response" parent="Background Computer/MarginContainer/ScrollContainer/PC_technically" instance=ExtResource("2_svdk1")]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background Computer/MarginContainer/ScrollContainer/PC_technically"]
+layout_mode = 2
